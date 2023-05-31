@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <math.h>
 #include "binary_trees.h"
 #include <stdio.h>
 
@@ -50,6 +49,25 @@ size_t check_height(const binary_tree_t *node)
 	return (height);
 }
 /**
+ * power - exponent of a number
+ * @base: base number
+ * @exponent: the exponent of the base
+ *
+ * Return: the exponentiation value
+ */
+size_t power (int base, size_t exponent)
+{
+    size_t temp;
+    if (exponent == 0)
+        return (1);
+
+    temp = power (base, exponent / 2);
+    if ((exponent % 2) == 0)
+        return (temp * temp);
+    else
+        return (base * temp * temp);
+}
+/**
  * binary_tree_is_perfect - checks if a tree is on the same level & max nodes
  * @tree: pointer to the tree
  *
@@ -64,12 +82,9 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 		return (0);
 
 	height = check_height(tree);
-	printf("height: %lu\n", height);
 	total_nodes = check_nodes(tree);
-	printf("total nodes: %lu", total_nodes);
-	max_nodes = pow(2, height);
-	printf("max_nodes: %lu", max_nodes);
-	perfect = max_nodes - total_nodes;
+	max_nodes = power(2, (height + 1));
+	perfect = (max_nodes - 1) - total_nodes;
 	if (perfect > 0)
 		return (0);
 
