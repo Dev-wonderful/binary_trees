@@ -55,17 +55,18 @@ size_t check_height(const binary_tree_t *node)
  *
  * Return: the exponentiation value
  */
-size_t power (int base, size_t exponent)
+size_t power(int base, size_t exponent)
 {
-    size_t temp;
-    if (exponent == 0)
-        return (1);
+	size_t temp;
 
-    temp = power (base, exponent / 2);
-    if ((exponent % 2) == 0)
-        return (temp * temp);
-    else
-        return (base * temp * temp);
+	if (exponent == 0)
+		return (1);
+
+	temp = power(base, exponent / 2);
+	if ((exponent % 2) == 0)
+		return (temp * temp);
+	else
+		return (base * temp * temp);
 }
 /**
  * binary_tree_is_perfect - checks if a tree is on the same level & max nodes
