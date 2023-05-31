@@ -61,6 +61,9 @@ int binary_tree_is_full(const binary_tree_t *tree)
 	size_t full;
 	size_t full_nodes, total_nodes;
 
+	if (tree == NULL)
+		return (0);
+
 	total_nodes = check_nodes(tree);
 	full_nodes = check_child(tree);
 	full = total_nodes - full_nodes;
