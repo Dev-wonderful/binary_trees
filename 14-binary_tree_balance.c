@@ -2,7 +2,7 @@
 #include "binary_trees.h"
 
 /**
- * check - looks for longest path
+ * check_height - looks for longest path
  * @node: the tree to be checked
  *
  * Return: returns a value representing height
@@ -46,13 +46,13 @@ int binary_tree_balance(const binary_tree_t *tree)
 		left = check_height(tree->left);
 	else
 		left = 0;
-	
+
 	if (tree->right != NULL)
 		right = check_height(tree->right);
 	else
 		right = 0;
 
 	balance = left - right;
-	
+
 	return (balance);
 }
